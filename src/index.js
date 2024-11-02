@@ -105,7 +105,7 @@ ${exemptList}
 });
 
 cron.schedule(
-  "*/30 * * * * *",
+  "0 0 * * *",
   () => {
     console.log(
       `-------------Checking updates at: ${moment()
