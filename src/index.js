@@ -6,10 +6,14 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const UPDATES_BOT_TOKEN = process.env.UPDATES_BOT_TOKEN;
+// test group
 // const GROUP_ID = -1002472603673;
 // const TOPIC_ID = 2;
-const GROUP_ID = process.env.GROUP_ID;
-const TOPIC_ID = process.env.TOPIC_ID;
+// production group
+const GROUP_ID = -1002162367846;
+const TOPIC_ID = 4564;
+
+console.log(UPDATES_BOT_TOKEN, GROUP_ID, TOPIC_ID);
 const TIMEZONE = "Asia/Kolkata";
 
 const bot = new TelegramBot(UPDATES_BOT_TOKEN, { polling: true });
