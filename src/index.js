@@ -1,3 +1,4 @@
+import express from "express";
 import TelegramBot from "node-telegram-bot-api";
 import moment from "moment-timezone";
 import cron from "node-cron";
@@ -17,10 +18,22 @@ console.log(UPDATES_BOT_TOKEN, GROUP_ID, TOPIC_ID);
 const TIMEZONE = "Asia/Kolkata";
 
 const bot = new TelegramBot(UPDATES_BOT_TOKEN, { polling: true });
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 const users = new Set();
 const exemptUsers = new Set();
 let dailyMessages = [];
+
+// Express route to check if the server is running
+app.get("/", (req, res) => {
+  res.send("Updates Bot is running...");
+});
+
+// Start the Express server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 bot.onText(/\/test/, (msg) => {
   const chatId = msg.chat.id;
